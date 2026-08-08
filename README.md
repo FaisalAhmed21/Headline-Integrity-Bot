@@ -86,7 +86,7 @@ The project is fully automated via GitHub Actions (`.github/workflows/news-bot.y
 ## Known Issues & Design Decisions
 - **Source Filtering & Bot-Blocking:** 
   - *bdnews24* was dropped because its Google News substitute returned topic/tag aggregation pages instead of real articles. It was replaced with The Guardian.
-  - *Reuters (HTTP 401)* and *ESPN Cricinfo (HTTP 403)* actively blocked headless browsers. They were replaced with NPR and BBC Cricket respectively (which were also later removed to meet the strict 6-source limit).
+  - *Reuters (HTTP 401)* and *ESPN Cricinfo (HTTP 403)* actively blocked headless browsers. They were also removed to adhere strictly to a six-source limit.
 - **Excerpt Boilerplate Contamination:** Initial versions pulled footer/sidebar/newsletter text instead of real article body text. Fixed via strict DOM selectors (excluding `<nav>`, `<footer>`, `<aside>`, etc.) combined with a cross-article text deduplication fallback.
 - **Strict Image Policy:** Images strictly follow `og:image` → `twitter:image` → `null`. Explicitly, **no generic/logo/stock-photo fallbacks are permitted**. Supplying an unrelated image on a news article is considered worse than no image because it misrepresents the source content.
 - **Google News Links:** Google News RSS items for Dhaka Tribune contain redirect URLs that must be resolved via HTTP headers before they can be scraped. This adds a slight delay to processing those specific items.
