@@ -1,0 +1,25 @@
+{
+  "name": "headline-integrity-checker",
+  "version": "0.1.0",
+  "private": true,
+  "type": "commonjs",
+  "description": "News headline drift checker with Telegram delivery and SQLite history.",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "check": "node src/index.js --dry-run",
+    "lint": "node --check src/index.js && node --check src/config.js && node --check src/db.js && node --check src/feed.js && node --check src/telegram.js && node --check src/compare.js && node --check src/scraper.js && node --check src/google-news.js",
+    "verify-feeds": "node scripts/verify-feeds.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "fast-xml-parser": "^4.5.3",
+    "fastest-levenshtein": "^1.0.16",
+    "google-news-url-decoder": "^1.2.2",
+    "playwright": "^1.62.1",
+    "sql.js": "^1.11.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

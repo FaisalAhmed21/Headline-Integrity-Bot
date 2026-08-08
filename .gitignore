@@ -1,0 +1,8 @@
+node_modules/
+.env
+*.log
+data/*.sqlite-journal
+
+# Explicitly DO include the SQLite databases
+!data/headlines.sqlite
+!data/sent_articles.sqlite
