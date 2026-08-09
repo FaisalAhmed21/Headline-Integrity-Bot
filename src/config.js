@@ -20,15 +20,8 @@ const sources = [
   {
     id: 'dhaka-tribune',
     name: 'Dhaka Tribune',
-    feedUrl: 'https://news.google.com/rss/search?q=when:7d+source:Dhaka+Tribune&hl=en-US&gl=US&ceid=US:en',
-    directFeed: false,
-    googleNews: true,
-    googleNewsSourceName: 'Dhaka Tribune',
-    notes: 'No public RSS feed found (404 on /feed and /rss.xml); Google News used as substitute.',
-    nonArticlePatterns: [
-      '\/topic\/',
-      '\/tag\/'
-    ]
+    feedUrl: 'https://www.dhakatribune.com/feed/',
+    directFeed: true
   },
   {
     id: 'guardian-world',

@@ -38,7 +38,7 @@ The current configuration (`src/config.js`) monitors the following 6 sources:
 |--------|--------|------|
 | **Prothom Alo** | Direct RSS | [https://www.prothomalo.com/feed](https://www.prothomalo.com/feed) |
 | **The Daily Star** | Direct RSS | [https://www.thedailystar.net/frontpage/rss.xml](https://www.thedailystar.net/frontpage/rss.xml) |
-| **Dhaka Tribune** | Google News | `https://news.google.com/rss/search?q=when:7d+source:Dhaka+Tribune...` |
+| **Dhaka Tribune** | Direct RSS | [https://www.dhakatribune.com/feed/](https://www.dhakatribune.com/feed/) |
 | **The Guardian** | Direct RSS | [https://www.theguardian.com/world/rss](https://www.theguardian.com/world/rss) |
 | **Al Jazeera** | Direct RSS | [https://www.aljazeera.com/xml/rss/all.xml](https://www.aljazeera.com/xml/rss/all.xml) |
 | **BBC Sport** | Direct RSS | [https://feeds.bbci.co.uk/sport/rss.xml?edition=uk](https://feeds.bbci.co.uk/sport/rss.xml?edition=uk) |
@@ -89,4 +89,4 @@ The project is fully automated via GitHub Actions (`.github/workflows/news-bot.y
   - *Reuters (HTTP 401)* and *ESPN Cricinfo (HTTP 403)* actively blocked headless browsers. They were also removed to adhere strictly to a six-source limit.
 - **Excerpt Boilerplate Contamination:** Initial versions pulled footer/sidebar/newsletter text instead of real article body text. Fixed via strict DOM selectors (excluding `<nav>`, `<footer>`, `<aside>`, etc.) combined with a cross-article text deduplication fallback.
 - **Strict Image Policy:** Images strictly follow `og:image` → `twitter:image` → `null`. Explicitly, **no generic/logo/stock-photo fallbacks are permitted**. Supplying an unrelated image on a news article is considered worse than no image because it misrepresents the source content.
-- **Google News Links:** Google News RSS items for Dhaka Tribune contain redirect URLs that must be resolved via HTTP headers before they can be scraped. This adds a slight delay to processing those specific items.
+
