@@ -71,7 +71,7 @@ Configure the bot using the following environment variables (or rely on defaults
 | `BOT_TOKEN` | Telegram Bot API token | *(Required)* |
 | `CHAT_ID` | Telegram Chat ID for delivery | *(Required)* |
 | `DB_PATH` | Path to the SQLite database | `data/headlines.sqlite` |
-| `MAX_ITEMS_PER_FEED` | Max articles to process per source per run | `5` |
+| `MAX_ITEMS_PER_FEED` | Max articles to process per source per run | `10` |
 | `REQUEST_DELAY_MS` | Delay between processing articles to prevent rate-limiting | `2500` |
 | `PAGE_TIMEOUT_MS` | Timeout for Playwright page loads | `30000` |
 | `MINOR_EDIT_THRESHOLD` | Levenshtein similarity threshold for minor drift | `0.85` |
@@ -79,7 +79,7 @@ Configure the bot using the following environment variables (or rely on defaults
 
 ## Deployment (GitHub Actions)
 The project is fully automated via GitHub Actions (`.github/workflows/news-bot.yml`).
-- Runs on a **cron schedule every 12 hours**.
+- Runs on a **cron schedule every 6 hours**.
 - Executes the full `node src/index.js` pipeline.
 - Automatically commits and pushes the updated SQLite database (`data/headlines.sqlite`) back to the repository to maintain historical drift state between runs.
 

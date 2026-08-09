@@ -55,7 +55,7 @@ const defaults = {
   dbPath: process.env.DB_PATH || 'data/headlines.sqlite',
   botToken: process.env.BOT_TOKEN || '',
   chatId: process.env.CHAT_ID || '',
-  maxItemsPerFeed: Number(process.env.MAX_ITEMS_PER_FEED || 5),
+  maxItemsPerFeed: Number(process.env.MAX_ITEMS_PER_FEED || 10),
   requestDelayMs: Number(process.env.REQUEST_DELAY_MS || 2500),
   pageTimeoutMs: Number(process.env.PAGE_TIMEOUT_MS || 30000),
   dryRun: String(process.env.DRY_RUN || '').toLowerCase() === 'true' || process.argv.includes('--dry-run'),
