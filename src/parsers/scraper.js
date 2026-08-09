@@ -166,7 +166,6 @@ async function runQaChecks(page, extracted) {
     const blockSignals = [
       ...Array.from(document.querySelectorAll(
         '[class*="paywall"], [id*="paywall"], [class*="subscribe"], ' +
-        '[class*="cookie-consent"], [class*="gdpr"], [class*="consent-modal"], ' +
         '[class*="login-gate"], [class*="registration-wall"]'
       )),
     ];

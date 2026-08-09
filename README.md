@@ -73,7 +73,7 @@ Configure the bot using the following environment variables (or rely on defaults
 | `DB_PATH` | Path to the SQLite database | `data/headlines.sqlite` |
 | `MAX_ITEMS_PER_FEED` | Max articles to process per source per run | `10` |
 | `REQUEST_DELAY_MS` | Delay between processing articles to prevent rate-limiting | `2500` |
-| `PAGE_TIMEOUT_MS` | Timeout for Playwright page loads | `30000` |
+| `PAGE_TIMEOUT_MS` | Timeout for Playwright page loads | `60000` |
 | `MINOR_EDIT_THRESHOLD` | Levenshtein similarity threshold for minor drift | `0.85` |
 | `MATCH_THRESHOLD` | Levenshtein similarity threshold for a perfect match | `0.95` |
 

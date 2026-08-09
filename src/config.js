@@ -50,7 +50,7 @@ const defaults = {
   chatId: process.env.CHAT_ID || '',
   maxItemsPerFeed: Number(process.env.MAX_ITEMS_PER_FEED || 10),
   requestDelayMs: Number(process.env.REQUEST_DELAY_MS || 2500),
-  pageTimeoutMs: Number(process.env.PAGE_TIMEOUT_MS || 30000),
+  pageTimeoutMs: Number(process.env.PAGE_TIMEOUT_MS || 60000),
   dryRun: String(process.env.DRY_RUN || '').toLowerCase() === 'true' || process.argv.includes('--dry-run'),
   minorEditThreshold: Number(process.env.MINOR_EDIT_THRESHOLD || 0.85),
   matchThreshold: Number(process.env.MATCH_THRESHOLD || 0.95)
