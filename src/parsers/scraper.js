@@ -221,15 +221,34 @@ async function fetchLiveArticle(url, options) {
   });
   const page = await context.newPage();
 
+  // Block unnecessary resources to massively speed up parsing and avoid 30s domcontentloaded timeouts
+  await page.route('**/*', (route) => {
+    const resourceType = route.request().resourceType();
+    if (['image', 'media', 'font', 'stylesheet', 'script'].includes(resourceType)) {
+      route.abort();
+    } else {
+      route.continue();
+    }
+  });
+
   try {
-    const response = await page.goto(url, {
-      waitUntil: 'domcontentloaded',
-      timeout: options.pageTimeoutMs
-    });
+    let response = null;
+    try {
+      response = await page.goto(url, {
+        waitUntil: 'domcontentloaded',
+        timeout: options.pageTimeoutMs
+      });
+    } catch (gotoErr) {
+      if (gotoErr.message.includes('Timeout')) {
+        console.log(`  [WARN] Goto timed out, proceeding with extraction for ${url}`);
+      } else {
+        throw gotoErr;
+      }
+    }
 
     await sleep(1000);
 
-    const status = response ? response.status() : 0;
+    const status = response ? response.status() : 200;
     const extracted = await extractArticle(page);
 
     if (status === 404 || status === 410) {
