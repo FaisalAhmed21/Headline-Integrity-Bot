@@ -266,7 +266,20 @@ async function fetchLiveArticle(url, options) {
       };
     }
 
-    if (!response || !response.ok()) {
+    if (!response && !extracted.headline) {
+      return {
+        status: 'FETCH_ERROR',
+        liveTitle: null,
+        liveAuthor: extracted.author,
+        livePublished: extracted.published,
+        liveUpdated: extracted.updated,
+        ogImage: null,
+        excerpt: null,
+        readTime: null,
+        resolvedUrl: page.url(),
+        errorMessage: 'No response received and extraction failed'
+      };
+    } else if (response && !response.ok()) {
       return {
         status: 'FETCH_ERROR',
         liveTitle: extracted.headline || null,
@@ -277,7 +290,7 @@ async function fetchLiveArticle(url, options) {
         excerpt: null,
         readTime: null,
         resolvedUrl: page.url(),
-        errorMessage: response ? `HTTP ${status}` : 'No response received'
+        errorMessage: `HTTP ${status}`
       };
     }
 
